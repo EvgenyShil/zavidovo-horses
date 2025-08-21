@@ -1,47 +1,23 @@
 import React, { useRef } from "react";
+import { Phone, Mail, MapPin, Baby, Horse, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
 import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from "./constants.js";
 
-// минимальные самопроверки (видны в консоли браузера)
+// Мини‑самопроверки (консоль браузера)
 (function runSelfTests() {
   console.assert(typeof BRAND === "string" && BRAND.length > 0, "BRAND must be a non-empty string");
-  console.assert(!/\/.test(BRAND), "BRAND must not contain stray backslashes");
+  console.assert(!/\\/.test(BRAND), "BRAND must not contain stray backslashes");
   console.assert(/^\d+$/.test(PHONE_LINK), "PHONE_LINK must contain only digits");
   console.assert(Array.isArray(services) && services.length >= 3, "services must contain at least 3 items");
   console.info("✅ Self-tests passed");
 })();
 
-const icons = {
-  "check-2": (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M3 18l6-6 3 3 7-7" />
-      <path d="M14 8l2-2 3 3-2 2z" />
-    </svg>
-  ),
-  "kid": (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M7 17a4 4 0 0 1 8 0" />
-      <circle cx="12" cy="8" r="3" />
-    </svg>
-  ),
-  "tick": (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M5 12l4 4L19 6" />
-    </svg>
-  ),
-  "stable": (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M3 10l9-6 9 6v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-    </svg>
-  ),
-  "horse": (
-    <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M4 17c2-1 3-3 4-5l2-4 4 2 3 3 3 2" />
-      <circle cx="9.5" cy="6.5" r="1" />
-    </svg>
-  )
+const Icon = ({ name }) => {
+  const map = { Baby, Horse, CheckCircle2, Home, Activity };
+  const Cmp = map[name] || CheckCircle2;
+  return <Cmp className="w-6 h-6" strokeWidth={1.5} />;
 };
 
-export default function StableLanding() {
+export default function App() {
   const formRef = useRef(null);
   const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
@@ -52,11 +28,7 @@ export default function StableLanding() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-2xl bg-amber-200/70 border border-amber-300 shadow-sm">
-              {/* Simple horse head mark */}
-              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M5 14c3-1 4-6 10-8l3 2-2 2 2 2-2 2c-3 3-7 4-11 2z" />
-                <circle cx="13.5" cy="8.5" r=".8" />
-              </svg>
+              <Horse className="w-5 h-5" strokeWidth={1.5} />
             </span>
             <span className="font-semibold tracking-tight">{BRAND}</span>
           </div>
@@ -114,7 +86,7 @@ export default function StableLanding() {
             <article key={i} className="group rounded-2xl bg-white border border-neutral-200 p-5 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-800 border border-amber-200">
-                  {icons[s.icon] || icons["check-2"]}
+                  <Icon name={s.icon} />
                 </span>
                 <h3 className="font-medium">{s.title}</h3>
               </div>
@@ -156,9 +128,7 @@ export default function StableLanding() {
                 <ul className="mt-4 space-y-2 text-sm text-neutral-700">
                   {p.features.map((f, j) => (
                     <li key={j} className="flex gap-2">
-                      <svg viewBox="0 0 24 24" className="w-4 h-4 mt-[2px]" fill="none" stroke="currentColor" strokeWidth="1.8">
-                        <path d="M5 12l4 4L19 6" />
-                      </svg>
+                      <CheckCircle2 className="w-4 h-4 mt-[2px]" strokeWidth={1.8} />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -174,7 +144,7 @@ export default function StableLanding() {
       <section ref={formRef} className="bg-white/60 border-y border-neutral-200">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-2xl sm:text-3xl font-semibold">Быстрая запись</h2>
-          <p className="mt-2 text-neutral-600 text-sm">Оставьте контакты, мы уточним детали и время. Или звоните: <a href={`tel:${PHONE_LINK}`} className="underline">{PHONE}</a></p>
+          <p className="mt-2 text-neutral-600 text-sm">Оставьте контакты, мы уточним детали и время.</p>
           <form onSubmit={(e) => { e.preventDefault(); alert("Спасибо! Мы свяжемся с вами в ближайшее время."); }} className="mt-6 grid md:grid-cols-3 gap-4">
             <input required placeholder="Ваше имя" className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300" />
             <input required placeholder="Телефон" inputMode="tel" className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300" />
@@ -185,7 +155,10 @@ export default function StableLanding() {
             <input placeholder="Пожелания (необязательно)" className="md:col-span-2 px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300" />
             <button className="md:col-span-3 px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700">Отправить заявку</button>
           </form>
-          <div className="mt-4 text-sm text-neutral-600">Или напишите: <a href={`https://wa.me/${WHATSAPP}`} className="underline">WhatsApp</a> • <a href="mailto:info@zavidovo-horses.ru" className="underline">Email</a></div>
+          <div className="mt-4 text-sm text-neutral-700 flex flex-col gap-1">
+            <a className="inline-flex items-center gap-2 underline" href={`tel:${PHONE_LINK}`}><Phone className="w-4 h-4" /> {PHONE}</a>
+            <a className="inline-flex items-center gap-2 underline" href="mailto:info@zavidovo-horses.ru"><Mail className="w-4 h-4" /> info@zavidovo-horses.ru</a>
+          </div>
         </div>
       </section>
 
@@ -212,7 +185,7 @@ export default function StableLanding() {
         <div className="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-2xl sm:text-3xl font-semibold">Контакты</h2>
-            <p className="mt-4 text-neutral-300">Адрес: {ADDRESS}</p>
+            <p className="mt-4 text-neutral-300 inline-flex items-center gap-2"><MapPin className="w-4 h-4" /> Адрес: {ADDRESS}</p>
             <div className="mt-3 text-neutral-300">Телефон: <a className="underline" href={`tel:${PHONE_LINK}`}>{PHONE}</a></div>
             <div className="mt-1 text-neutral-300">Доп. телефон: <a className="underline" href="tel:+79038084975">+7 (903) 808‑49‑75</a></div>
             <div className="mt-1 text-neutral-300">Email: <a className="underline" href="mailto:info@zavidovo-horses.ru">info@zavidovo-horses.ru</a></div>
@@ -232,9 +205,7 @@ export default function StableLanding() {
         <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center justify-center w-7 h-7 rounded-xl bg-amber-200/70 border border-amber-300">
-              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M5 14c3-1 4-6 10-8l3 2-2 2 2 2-2 2c-3 3-7 4-11 2z" />
-              </svg>
+              <Horse className="w-4 h-4" strokeWidth={1.5} />
             </span>
             <span className="text-sm">{BRAND}</span>
           </div>
@@ -243,8 +214,8 @@ export default function StableLanding() {
       </footer>
 
       {/* FLOAT BUTTON */}
-      <a href={`https://wa.me/${WHATSAPP}`} className="fixed bottom-4 right-4 px-4 py-3 rounded-2xl bg-emerald-500 text-white shadow-lg hover:bg-emerald-600">
-        Написать в WhatsApp
+      <a href={`https://wa.me/${WHATSAPP}`} className="fixed bottom-4 right-4 px-4 py-3 rounded-2xl bg-emerald-500 text-white shadow-lg hover:bg-emerald-600 inline-flex items-center gap-2">
+        <MessageCircle className="w-4 h-4" /> Написать в WhatsApp
       </a>
     </div>
   );
