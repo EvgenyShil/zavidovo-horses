@@ -4,7 +4,7 @@ import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from 
 // минимальные самопроверки (видны в консоли браузера)
 (function runSelfTests() {
   console.assert(typeof BRAND === "string" && BRAND.length > 0, "BRAND must be a non-empty string");
-  console.assert(!BRAND.includes("\"), "BRAND must not contain stray backslashes");
+  console.assert(!/\/.test(BRAND), "BRAND must not contain stray backslashes");
   console.assert(/^\d+$/.test(PHONE_LINK), "PHONE_LINK must contain only digits");
   console.assert(Array.isArray(services) && services.length >= 3, "services must contain at least 3 items");
   console.info("✅ Self-tests passed");
