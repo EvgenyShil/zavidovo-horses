@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Phone, Mail, MapPin, Baby, Horse, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Baby, Rabbit, GraduationCap, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
 import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from "./constants.js";
 
 // Мини‑самопроверки (консоль браузера)
@@ -12,7 +12,7 @@ import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from 
 })();
 
 const Icon = ({ name }) => {
-  const map = { Baby, Horse, CheckCircle2, Home, Activity };
+  const map = { Baby, GraduationCap, CheckCircle2, Home, Activity };
   const Cmp = map[name] || CheckCircle2;
   return <Cmp className="w-6 h-6" strokeWidth={1.5} />;
 };
@@ -28,7 +28,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-2xl bg-amber-200/70 border border-amber-300 shadow-sm">
-              <Horse className="w-5 h-5" strokeWidth={1.5} />
+              <Rabbit className="w-5 h-5" strokeWidth={1.5} />
             </span>
             <span className="font-semibold tracking-tight">{BRAND}</span>
           </div>
@@ -205,7 +205,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center justify-center w-7 h-7 rounded-xl bg-amber-200/70 border border-amber-300">
-              <Horse className="w-4 h-4" strokeWidth={1.5} />
+              <Rabbit className="w-4 h-4" strokeWidth={1.5} />
             </span>
             <span className="text-sm">{BRAND}</span>
           </div>
