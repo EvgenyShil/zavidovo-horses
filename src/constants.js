@@ -1,18 +1,12 @@
 // Тексты и настройки сайта
 export const BRAND = 'КСК "Золотое сечение"';
-export const PHONE = "+7 (960) 713‑18‑43";
-export const PHONE_LINK = "79607131843";
-export const WHATSAPP = "79607131843";
+export const PHONE = "+7 (925) 011‑48‑84";
+export const PHONE_LINK = "79250114884";
+export const WHATSAPP = "79250114884";
 export const TELEGRAM = "zavidovo_horses"; // опционально
 export const ADDRESS = "Тверская обл., Конаковский р‑н, дер. Щёлково";
 
 export const services = [
-  {
-    title: "Обучение верховой езде",
-    desc: "Базовые навыки для начинающих всадников. Индивидуально или микрогруппа до 2 человек.",
-    price: "2 000 ₽ / 1 ч",
-    icon: "GraduationCap",
-  },
   {
     title: "Уроки для детей",
     desc: "Спокойные и безопасные занятия для детей под присмотром тренера.",
@@ -28,7 +22,7 @@ export const services = [
   {
     title: "Постой лошадей (денники)",
     desc: "Просторные денники, выгула, уход, индивидуальный рацион.",
-    price: "по запросу / мес",
+    price: "30 000 ₽ / мес",
     icon: "Home",
   },
   {

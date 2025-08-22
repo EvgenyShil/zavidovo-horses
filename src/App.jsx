@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Phone, Mail, MapPin, Baby, Rabbit, GraduationCap, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Baby, Rabbit, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
 import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from "./constants.js";
 
 // Мини‑самопроверки (консоль браузера)
@@ -12,7 +12,7 @@ import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from 
 })();
 
 const Icon = ({ name }) => {
-  const map = { Baby, GraduationCap, CheckCircle2, Home, Activity };
+  const map = { Baby, CheckCircle2, Home, Activity };
   const Cmp = map[name] || CheckCircle2;
   return <Cmp className="w-6 h-6" strokeWidth={1.5} />;
 };
@@ -48,12 +48,12 @@ export default function App() {
       {/* HERO */}
       <section className="relative bg-gradient-to-br from-amber-50 to-neutral-100">
         <div className="max-w-6xl mx-auto px-4 h-[52vh] flex flex-col justify-end pb-12">
-          <span className="inline-block w-fit mb-3 text-[11px] tracking-widest uppercase text-amber-900/80">Верховая езда • Выездка • Постой</span>
+          <span className="inline-block w-fit mb-3 text-[11px] tracking-widest uppercase text-amber-900/80">Выездка • Постой</span>
           <h1 className="text-neutral-900 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-            Завидово: учим, тренируем, заботимся о лошадях
+            Завидово: тренируем и заботимся о лошадях
           </h1>
           <p className="max-w-2xl mt-4 text-neutral-700 text-base sm:text-lg">
-            {BRAND} — конный клуб в Тверской области (дер. Щёлково). Обучение верховой езде для взрослых и детей, тренировки по выездке, постой лошадей.
+            {BRAND} — конный клуб в Тверской области (дер. Щёлково). Тренировки по выездке и постой лошадей.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <button onClick={scrollToForm} className="px-5 py-3 rounded-2xl bg-neutral-900 text-white shadow hover:shadow-md active:scale-[.99]">
@@ -116,7 +116,7 @@ export default function App() {
               features: ["Индивидуально", "Спокойные лошади", "Сопровождение родителя по желанию"]
             }, {
               name: "Постой лошади (денник)",
-              price: "по запросу",
+              price: "30 000 ₽ / мес",
               features: ["Уход и выгула", "Кормление по графику", "Ветконтроль по договоренности"]
             }].map((p, i) => (
               <div key={i} className={`rounded-2xl border p-6 bg-white shadow-sm ${p.badge ? "border-amber-400" : "border-neutral-200"}`}>
@@ -157,7 +157,7 @@ export default function App() {
           </form>
           <div className="mt-4 text-sm text-neutral-700 flex flex-col gap-1">
             <a className="inline-flex items-center gap-2 underline" href={`tel:${PHONE_LINK}`}><Phone className="w-4 h-4" /> {PHONE}</a>
-            <a className="inline-flex items-center gap-2 underline" href="mailto:info@zavidovo-horses.ru"><Mail className="w-4 h-4" /> info@zavidovo-horses.ru</a>
+            <a className="inline-flex items-center gap-2 underline" href="mailto:eg0114884@gmail.com"><Mail className="w-4 h-4" /> eg0114884@gmail.com</a>
           </div>
         </div>
       </section>
@@ -187,8 +187,8 @@ export default function App() {
             <h2 className="text-2xl sm:text-3xl font-semibold">Контакты</h2>
             <p className="mt-4 text-neutral-300 inline-flex items-center gap-2"><MapPin className="w-4 h-4" /> Адрес: {ADDRESS}</p>
             <div className="mt-3 text-neutral-300">Телефон: <a className="underline" href={`tel:${PHONE_LINK}`}>{PHONE}</a></div>
-            <div className="mt-1 text-neutral-300">Доп. телефон: <a className="underline" href="tel:+79038084975">+7 (903) 808‑49‑75</a></div>
-            <div className="mt-1 text-neutral-300">Email: <a className="underline" href="mailto:info@zavidovo-horses.ru">info@zavidovo-horses.ru</a></div>
+            <div className="mt-1 text-neutral-300">Доп. телефон: <a className="underline" href="tel:+79264730780">+7 (926) 473‑07‑80</a></div>
+            <div className="mt-1 text-neutral-300">Email: <a className="underline" href="mailto:eg0114884@gmail.com">eg0114884@gmail.com</a></div>
             <p className="mt-6 text-sm text-neutral-400">Работаем по предварительной записи.</p>
           </div>
           <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-800/50 p-4">
