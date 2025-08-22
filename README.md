@@ -35,9 +35,8 @@ npm run preview
    - Output Directory: **dist**
 5. Нажмите **Deploy** — после сборки получите продакшн‑ссылку.
 
-### Как поменять название/описание/иконку вкладки
+### Как поменять название/описание вкладки
 - Заголовок и description: `index.html` в `<title>` и `<meta name="description">`.
-- Favicon: замените `public/favicon.svg` (или подключите свой `.png/.ico`).
 
 ### Где править контент
 - Тексты, цены, телефоны: `src/constants.js`
