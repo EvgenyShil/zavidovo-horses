@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Phone, Mail, MapPin, Baby, Horse, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Baby, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
 import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from "./constants.js";
 
 // Мини‑самопроверки (консоль браузера)
@@ -12,7 +12,7 @@ import { BRAND, PHONE, PHONE_LINK, WHATSAPP, TELEGRAM, ADDRESS, services } from 
 })();
 
 const Icon = ({ name }) => {
-  const map = { Baby, Horse, CheckCircle2, Home, Activity };
+  const map = { Baby, CheckCircle2, Home, Activity };
   const Cmp = map[name] || CheckCircle2;
   return <Cmp className="w-6 h-6" strokeWidth={1.5} />;
 };
@@ -26,10 +26,7 @@ export default function App() {
       {/* NAVBAR */}
       <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-2xl bg-amber-200/70 border border-amber-300 shadow-sm">
-              <Horse className="w-5 h-5" strokeWidth={1.5} />
-            </span>
+          <div className="flex items-center">
             <span className="font-semibold tracking-tight">{BRAND}</span>
           </div>
           <nav className="hidden sm:flex items-center gap-6 text-sm">
@@ -116,7 +113,7 @@ export default function App() {
               features: ["Индивидуально", "Спокойные лошади", "Сопровождение родителя по желанию"]
             }, {
               name: "Постой лошади (денник)",
-              price: "по запросу",
+              price: "30 000 ₽ / мес",
               features: ["Уход и выгула", "Кормление по графику", "Ветконтроль по договоренности"]
             }].map((p, i) => (
               <div key={i} className={`rounded-2xl border p-6 bg-white shadow-sm ${p.badge ? "border-amber-400" : "border-neutral-200"}`}>
@@ -157,7 +154,7 @@ export default function App() {
           </form>
           <div className="mt-4 text-sm text-neutral-700 flex flex-col gap-1">
             <a className="inline-flex items-center gap-2 underline" href={`tel:${PHONE_LINK}`}><Phone className="w-4 h-4" /> {PHONE}</a>
-            <a className="inline-flex items-center gap-2 underline" href="mailto:info@zavidovo-horses.ru"><Mail className="w-4 h-4" /> info@zavidovo-horses.ru</a>
+            <a className="inline-flex items-center gap-2 underline" href="mailto:eg0114884@gmail.com"><Mail className="w-4 h-4" /> eg0114884@gmail.com</a>
           </div>
         </div>
       </section>
@@ -186,9 +183,9 @@ export default function App() {
           <div>
             <h2 className="text-2xl sm:text-3xl font-semibold">Контакты</h2>
             <p className="mt-4 text-neutral-300 inline-flex items-center gap-2"><MapPin className="w-4 h-4" /> Адрес: {ADDRESS}</p>
-            <div className="mt-3 text-neutral-300">Телефон: <a className="underline" href={`tel:${PHONE_LINK}`}>{PHONE}</a></div>
-            <div className="mt-1 text-neutral-300">Доп. телефон: <a className="underline" href="tel:+79038084975">+7 (903) 808‑49‑75</a></div>
-            <div className="mt-1 text-neutral-300">Email: <a className="underline" href="mailto:info@zavidovo-horses.ru">info@zavidovo-horses.ru</a></div>
+            <div className="mt-3 text-neutral-300">Телефон (Евгений Гриненко): <a className="underline" href={`tel:${PHONE_LINK}`}>{PHONE}</a></div>
+            <div className="mt-1 text-neutral-300">Телефон (Юлия Гриненко): <a className="underline" href="tel:+79264730780">+7 (926) 473‑07‑80</a></div>
+            <div className="mt-1 text-neutral-300">Email: <a className="underline" href="mailto:eg0114884@gmail.com">eg0114884@gmail.com</a></div>
             <p className="mt-6 text-sm text-neutral-400">Работаем по предварительной записи.</p>
           </div>
           <div className="rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-800/50 p-4">
@@ -204,9 +201,6 @@ export default function App() {
       <footer className="bg-neutral-950 text-neutral-400">
         <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-7 h-7 rounded-xl bg-amber-200/70 border border-amber-300">
-              <Horse className="w-4 h-4" strokeWidth={1.5} />
-            </span>
             <span className="text-sm">{BRAND}</span>
           </div>
           <div className="text-xs">© {new Date().getFullYear()} {BRAND}. Любовь к лошадям — в деталях.</div>
