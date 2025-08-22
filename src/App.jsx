@@ -67,7 +67,7 @@ export default function App() {
       </section>
 
       {/* BADGES */}
-      <section className="max-w-6xl mx-auto px-4 -mt-8 grid sm:grid-cols-3 gap-3">
+      <section className="max-w-6xl mx-auto px-4 mt-6 sm:-mt-8 grid sm:grid-cols-3 gap-3">
         {["Новичкам и опытным", "Шлемы и защита включены", "Тёплая комната отдыха"].map((b, i) => (
           <div key={i} className="rounded-2xl bg-white border border-neutral-200 p-3 text-sm shadow-sm">
             {b}
