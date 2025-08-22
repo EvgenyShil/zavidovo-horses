@@ -112,7 +112,7 @@ export default function App() {
       </section>
 
       {/* BADGES */}
-      <section className="max-w-6xl mx-auto px-4 mt-6 sm:-mt-8 grid sm:grid-cols-3 gap-3">
+      <section className="max-w-6xl mx-auto px-4 mt-6 grid sm:grid-cols-3 gap-3">
         {["Новичкам и опытным", "Шлемы и защита включены", "Тёплая комната отдыха"].map((b, i) => (
           <div key={i} className="rounded-2xl bg-white border border-neutral-200 p-3 text-sm shadow-sm">
             {b}
@@ -121,7 +121,7 @@ export default function App() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="max-w-6xl mx-auto px-4 py-16">
+      <section id="services" className="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
         <div className="flex items-end justify-between gap-6 mb-8">
           <h2 className="text-2xl sm:text-3xl font-semibold">Наши услуги</h2>
             <button
@@ -162,7 +162,7 @@ export default function App() {
       </section>
 
       {/* PRICES */}
-      <section id="prices" className="bg-white/60 border-y border-neutral-200">
+      <section id="prices" className="bg-white/60 border-y border-neutral-200 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-2xl sm:text-3xl font-semibold">Прайс</h2>
           <div className="mt-6 grid md:grid-cols-3 gap-6">
@@ -211,7 +211,7 @@ export default function App() {
       </section>
 
       {/* SAFETY */}
-      <section id="safety" className="max-w-6xl mx-auto px-4 py-16">
+      <section id="safety" className="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
         <h2 className="text-2xl sm:text-3xl font-semibold">Безопасность и правила</h2>
         <p className="mt-4 text-neutral-700">Мы строго соблюдаем безопасность</p>
         <ul className="mt-4 space-y-2 text-sm text-neutral-700">
@@ -254,7 +254,7 @@ export default function App() {
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" className="max-w-6xl mx-auto px-4 py-16">
+      <section id="reviews" className="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
         <h2 className="text-2xl sm:text-3xl font-semibold">Отзывы</h2>
         <div className="mt-6 grid md:grid-cols-3 gap-6">
           {[
@@ -329,7 +329,7 @@ export default function App() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="max-w-6xl mx-auto px-4 py-16">
+      <section id="faq" className="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
         <h2 className="text-2xl sm:text-3xl font-semibold">Частые вопросы</h2>
         <div className="mt-6 grid md:grid-cols-2 gap-6">
           {[
@@ -347,7 +347,7 @@ export default function App() {
       </section>
 
       {/* CONTACTS */}
-      <section id="contacts" className="bg-neutral-900 text-neutral-50">
+      <section id="contacts" className="bg-neutral-900 text-neutral-50 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-2 gap-8">
           <div>
             <h2 className="text-2xl sm:text-3xl font-semibold">Контакты</h2>
