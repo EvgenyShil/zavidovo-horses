@@ -32,7 +32,13 @@ const track = (goal) => window.ym?.(METRIKA_ID, "reachGoal", goal);
 
 export default function App() {
   const formRef = useRef(null);
-  const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const serviceRef = useRef(null);
+  const commentRef = useRef(null);
+  const scrollToForm = (message = "", serviceTitle = "") => {
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (message && commentRef.current) commentRef.current.value = message;
+    if (serviceTitle && serviceRef.current) serviceRef.current.value = serviceTitle;
+  };
   const waLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
@@ -63,7 +69,7 @@ export default function App() {
             <button
               onClick={() => {
                 track("package_select");
-                scrollToForm();
+                scrollToForm("Хочу записаться на урок");
               }}
               className="px-3 py-2 rounded-xl bg-amber-600 text-white text-sm shadow hover:bg-amber-700 active:scale-[.98]"
             >
@@ -86,7 +92,7 @@ export default function App() {
             <button
               onClick={() => {
                 track("package_select");
-                scrollToForm();
+                scrollToForm("Хочу записаться на урок");
               }}
               className="px-5 py-3 rounded-2xl bg-neutral-900 text-white shadow hover:shadow-md active:scale-[.99]"
             >
@@ -121,7 +127,7 @@ export default function App() {
             <button
               onClick={() => {
                 track("package_select");
-                scrollToForm();
+                scrollToForm("Хочу записаться на урок");
               }}
               className="hidden sm:block px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm"
             >
@@ -143,7 +149,7 @@ export default function App() {
                 <button
                   onClick={() => {
                     track("package_select");
-                    scrollToForm();
+                    scrollToForm(`Записаться на ${s.title}`, s.title);
                   }}
                   className="text-sm text-amber-700 hover:underline"
                 >
@@ -192,7 +198,7 @@ export default function App() {
                 <button
                   onClick={() => {
                     track("package_select");
-                    scrollToForm();
+                    scrollToForm(`Интересует пакет: ${p.name}`);
                   }}
                   className="mt-6 w-full px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm"
                 >
@@ -238,7 +244,7 @@ export default function App() {
           <button
             onClick={() => {
               track("package_select");
-              scrollToForm();
+              scrollToForm("Хочу получить сертификат");
             }}
             className="mt-6 px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.98]"
           >
@@ -268,7 +274,7 @@ export default function App() {
       </section>
 
       {/* FORM */}
-      <section ref={formRef} className="bg-white/60 border-y border-neutral-200">
+      <section ref={formRef} className="bg-white/60 border-y border-neutral-200 scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-2xl sm:text-3xl font-semibold">Быстрая запись</h2>
           <p className="mt-2 text-neutral-600 text-sm">Оставьте контакты, мы уточним детали и время.</p>
@@ -291,11 +297,18 @@ export default function App() {
               inputMode="tel"
               className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300"
             />
-            <select className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300">
+            <select
+              ref={serviceRef}
+              className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300"
+            >
               {services.map((s, i) => <option key={i}>{s.title}</option>)}
             </select>
             <input type="date" className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300" />
-            <input placeholder="Пожелания (необязательно)" className="md:col-span-2 px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            <input
+              ref={commentRef}
+              placeholder="Пожелания (необязательно)"
+              className="md:col-span-2 px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300"
+            />
             <button className="md:col-span-3 px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.98]">
               Отправить заявку
             </button>
