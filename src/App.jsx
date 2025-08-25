@@ -80,31 +80,30 @@ export default function App() {
       </header>
 
       {/* HERO */}
-      <section className="relative bg-gradient-to-br from-amber-50 to-neutral-100">
-        <div className="max-w-6xl mx-auto px-4 h-[52vh] flex flex-col justify-end pb-12">
-          <h1 className="text-neutral-900 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
+      <section
+        className="relative"
+        style={{
+          backgroundImage: 'url(/images/hero-sunset.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 60%',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/35 to-transparent" />
+        <div className="relative max-w-6xl mx-auto px-4 h-[52vh] flex flex-col justify-end pb-12 text-white">
+          <span className="inline-block w-fit mb-3 text-[11px] tracking-widest uppercase text-white/80">
+            Верховая езда • Выездка • Постой
+          </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
             Завидово: учим, тренируем, заботимся о лошадях
           </h1>
-          <p className="max-w-2xl mt-4 text-neutral-700 text-base sm:text-lg">
-            {BRAND} — уютный конный клуб в дер. Щёлково. Обучение верховой езде для взрослых и детей, выездка и постой лошадей.
+          <p className="max-w-2xl mt-4 text-white/90 text-base sm:text-lg">
+            КСК «Золотое сечение» — уютный конный клуб в дер. Щёлково. Обучение для взрослых и детей, тренировки по выездке, постой лошадей.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <button
-              onClick={() => {
-                track("package_select");
-                scrollToForm("Хочу записаться на урок");
-              }}
-              className="px-5 py-3 rounded-2xl bg-neutral-900 text-white shadow hover:shadow-md active:scale-[.99]"
-            >
+            <button onClick={scrollToForm} className="px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.99]">
               Записаться
             </button>
-            <a
-              href={waLink}
-              onClick={() => track("whatsapp_click")}
-              target="_blank"
-              rel="noreferrer"
-              className="px-5 py-3 rounded-2xl border border-neutral-700 text-neutral-900 hover:bg-neutral-900/5"
-            >
+            <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" className="px-5 py-3 rounded-2xl border border-white/70 text-white hover:bg-white/10">
               Написать в WhatsApp
             </a>
           </div>
@@ -206,6 +205,23 @@ export default function App() {
                 </button>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AWARDS */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-6 items-center">
+          <div className="grid grid-cols-2 gap-3">
+            <img src="/images/awards-team.jpg" alt="Команда КСК «Золотое сечение» на пьедестале с наградами" className="rounded-2xl object-cover w-full h-48 sm:h-56" loading="lazy" decoding="async" />
+            <img src="/images/awards-trophies.jpg" alt="Кубки и грамоты КСК «Золотое сечение»" className="rounded-2xl object-cover w-full h-48 sm:h-56" loading="lazy" decoding="async" />
+          </div>
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-semibold">Победы наших спортсменов</h2>
+            <p className="mt-3 text-neutral-600">
+              Регулярно выступаем на областных стартах и кубках. Занятия по выездке — с разбором ошибок и подготовкой к стартам.
+            </p>
+            <div className="mt-5 text-sm text-neutral-500">Фото: наши спортсмены и трофеи.</div>
           </div>
         </div>
       </section>
@@ -325,6 +341,44 @@ export default function App() {
               <Mail className="w-4 h-4" /> {EMAIL}
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* TRAINING / DRESSAGE */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <h2 className="text-2xl sm:text-3xl font-semibold">Тренировки по выездке</h2>
+          <p className="mt-2 text-neutral-600">Спокойная подача, чистая посадка, понятная методика для взрослых и детей.</p>
+          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <figure className="rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+              <img src="/images/dressage-portrait.jpg" alt="Всадница в манеже — портретный кадр на шагу" className="w-full h-56 object-cover" loading="lazy" decoding="async" />
+              <figcaption className="p-3 text-sm text-neutral-600">Первые занятия — спокойно и безопасно</figcaption>
+            </figure>
+            <figure className="rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+              <img src="/images/dressage-1.jpg" alt="Тренировка по выездке — рысь в манеже" className="w-full h-56 object-cover" loading="lazy" decoding="async" />
+              <figcaption className="p-3 text-sm text-neutral-600">Развиваем посадку и управление</figcaption>
+            </figure>
+            <figure className="rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+              <img src="/images/dressage-2.jpg" alt="Тренировка по выездке — проход мимо зрительской трибуны" className="w-full h-56 object-cover" loading="lazy" decoding="async" />
+              <figcaption className="p-3 text-sm text-neutral-600">Подготовка к стартам по выездке</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* STABLE / CARE */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-semibold">Условия постоя</h2>
+            <ul className="mt-4 space-y-2 text-neutral-700 list-disc pl-5">
+              <li>Просторные денники, выгула, индивидуальный рацион</li>
+              <li>Ежедневный уход, кормление по графику</li>
+              <li>Ветеринарный контроль по договорённости</li>
+            </ul>
+            <button onClick={scrollToForm} className="mt-5 px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm">Узнать условия постоя</button>
+          </div>
+          <img src="/images/stable-horse.jpg" alt="Лошадь в деннике — условия постоя" className="rounded-2xl object-cover w-full h-64 md:h-80 border border-neutral-200" loading="lazy" decoding="async" />
         </div>
       </section>
 
