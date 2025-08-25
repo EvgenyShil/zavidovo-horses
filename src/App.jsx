@@ -1,12 +1,9 @@
 import React, { useRef } from "react";
-import { Phone, Mail, MapPin, Baby, Rabbit, CheckCircle2, Home, Activity, MessageCircle } from "lucide-react";
+import { MapPin, Baby, CheckCircle2, Home, Activity, MessageCircle, Send } from "lucide-react";
 import {
   BRAND,
-  PHONE,
-  PHONE_LINK,
   WHATSAPP,
   WHATSAPP_MESSAGE,
-  EMAIL,
   TELEGRAM,
   ADDRESS,
   services,
@@ -16,7 +13,6 @@ import {
 (function runSelfTests() {
   console.assert(typeof BRAND === "string" && BRAND.length > 0, "BRAND must be a non-empty string");
   console.assert(!/\\/.test(BRAND), "BRAND must not contain stray backslashes");
-  console.assert(/^\d+$/.test(PHONE_LINK), "PHONE_LINK must contain only digits");
   console.assert(Array.isArray(services) && services.length >= 3, "services must contain at least 3 items");
   console.info("✅ Self-tests passed");
 })();
@@ -40,6 +36,23 @@ export default function App() {
     if (serviceTitle && serviceRef.current) serviceRef.current.value = serviceTitle;
   };
   const waLink = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const sendMessage = (platform) => {
+    const formEl = formRef.current.querySelector('form');
+    const fd = new FormData(formEl);
+    const name = fd.get('name');
+    const phone = fd.get('phone');
+    const serviceTitle = fd.get('service');
+    const date = fd.get('date');
+    const comment = fd.get('comment');
+    const msg = `Здравствуйте! Меня зовут ${name}. Интересует ${serviceTitle}. Дата: ${date}. Телефон: ${phone}${comment ? `. ${comment}` : ''}`;
+    const encoded = encodeURIComponent(msg);
+    const url =
+      platform === 'wa'
+        ? `https://wa.me/${WHATSAPP}?text=${encoded}`
+        : `https://t.me/${TELEGRAM}?text=${encoded}`;
+    track(platform === 'wa' ? 'form_whatsapp' : 'form_telegram');
+    window.open(url, '_blank');
+  };
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
@@ -48,7 +61,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-2xl bg-amber-200/70 border border-amber-300 shadow-sm">
-              <Rabbit className="w-5 h-5" strokeWidth={1.5} />
+              <img src="/logo-horse.png" alt="" className="w-5 h-5" />
             </span>
             <span className="font-semibold tracking-tight">{BRAND}</span>
           </div>
@@ -60,11 +73,22 @@ export default function App() {
           </nav>
           <div className="flex items-center gap-2">
             <a
-              href={`tel:${PHONE_LINK}`}
-              onClick={() => track("phone_click")}
+              href={waLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => track("whatsapp_click")}
               className="hidden md:block text-sm text-neutral-600"
             >
-              {PHONE}
+              WhatsApp
+            </a>
+            <a
+              href={`https://t.me/${TELEGRAM}`}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => track("telegram_click")}
+              className="hidden md:block text-sm text-neutral-600"
+            >
+              Telegram
             </a>
             <button
               onClick={() => {
@@ -103,8 +127,23 @@ export default function App() {
             <button onClick={scrollToForm} className="px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.99]">
               Записаться
             </button>
-            <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" className="px-5 py-3 rounded-2xl border border-white/70 text-white hover:bg-white/10">
+            <a
+              href={`https://wa.me/${WHATSAPP}`}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => track("whatsapp_click")}
+              className="px-5 py-3 rounded-2xl border border-white/70 text-white hover:bg-white/10"
+            >
               Написать в WhatsApp
+            </a>
+            <a
+              href={`https://t.me/${TELEGRAM}`}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => track("telegram_click")}
+              className="px-5 py-3 rounded-2xl border border-white/70 text-white hover:bg-white/10"
+            >
+              Написать в Telegram
             </a>
           </div>
         </div>
@@ -294,51 +333,69 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-14">
           <h2 className="text-2xl sm:text-3xl font-semibold">Быстрая запись</h2>
           <p className="mt-2 text-neutral-600 text-sm">Оставьте контакты, мы уточним детали и время.</p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              track("form_submit");
-              alert("Спасибо! Мы свяжемся с вами в течение 15 минут (10:00–20:00).");
-            }}
-            className="mt-6 grid md:grid-cols-3 gap-4"
-          >
+          <form className="mt-6 grid md:grid-cols-3 gap-4">
             <input
+              name="name"
               required
               placeholder="Ваше имя"
               className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300"
             />
             <input
+              name="phone"
               required
               placeholder="+7 ХХХ ХХХ-ХХ-ХХ"
               inputMode="tel"
               className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300"
             />
             <select
+              name="service"
               ref={serviceRef}
               className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300"
             >
               {services.map((s, i) => <option key={i}>{s.title}</option>)}
             </select>
-            <input type="date" className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300" />
+            <input name="date" type="date" className="px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300" />
             <input
+              name="comment"
               ref={commentRef}
               placeholder="Пожелания (необязательно)"
               className="md:col-span-2 px-4 py-3 rounded-xl border border-neutral-300 bg-white focus:outline-none focus:ring-2 focus:ring-amber-300"
             />
-            <button className="md:col-span-3 px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.98]">
-              Отправить заявку
-            </button>
+            <div className="md:col-span-3 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => sendMessage('wa')}
+                className="px-5 py-3 rounded-2xl bg-emerald-500 text-white shadow hover:bg-emerald-600 active:scale-[.98]"
+              >
+                Отправить в WhatsApp
+              </button>
+              <button
+                type="button"
+                onClick={() => sendMessage('tg')}
+                className="px-5 py-3 rounded-2xl bg-sky-500 text-white shadow hover:bg-sky-600 active:scale-[.98]"
+              >
+                Отправить в Telegram
+              </button>
+            </div>
           </form>
           <div className="mt-4 text-sm text-neutral-700 flex flex-col gap-1">
             <a
               className="inline-flex items-center gap-2 underline"
-              href={`tel:${PHONE_LINK}`}
-              onClick={() => track("phone_click")}
+              href={waLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => track("whatsapp_click")}
             >
-              <Phone className="w-4 h-4" /> {PHONE}
+              <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>
-            <a className="inline-flex items-center gap-2 underline" href={`mailto:${EMAIL}`}>
-              <Mail className="w-4 h-4" /> {EMAIL}
+            <a
+              className="inline-flex items-center gap-2 underline"
+              href={`https://t.me/${TELEGRAM}`}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => track("telegram_click")}
+            >
+              <Send className="w-4 h-4" /> Telegram
             </a>
           </div>
         </div>
@@ -407,10 +464,10 @@ export default function App() {
             <h2 className="text-2xl sm:text-3xl font-semibold">Контакты</h2>
             <p className="mt-4 text-neutral-300 inline-flex items-center gap-2"><MapPin className="w-4 h-4" /> Адрес: {ADDRESS}</p>
             <div className="mt-3 text-neutral-300">
-              Телефон: <a className="underline" href={`tel:${PHONE_LINK}`} onClick={() => track("phone_click")}>{PHONE}</a>
+              WhatsApp: <a className="underline" href={waLink} target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click")}>Написать</a>
             </div>
             <div className="mt-1 text-neutral-300">
-              Email: <a className="underline" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              Telegram: <a className="underline" href={`https://t.me/${TELEGRAM}`} target="_blank" rel="noreferrer" onClick={() => track("telegram_click")}>@{TELEGRAM}</a>
             </div>
             <p className="mt-6 text-sm text-neutral-400">Работаем по предварительной записи.</p>
           </div>
@@ -454,7 +511,7 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center justify-center w-7 h-7 rounded-xl bg-amber-200/70 border border-amber-300">
-              <Rabbit className="w-4 h-4" strokeWidth={1.5} />
+              <img src="/logo-horse.png" alt="" className="w-4 h-4" />
             </span>
             <span className="text-sm">{BRAND}</span>
           </div>
