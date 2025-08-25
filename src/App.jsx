@@ -89,7 +89,7 @@ export default function App() {
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/35 to-transparent" />
-        <div className="relative max-w-6xl mx-auto px-4 h-[52vh] flex flex-col justify-end pb-12 text-white">
+        <div className="relative max-w-6xl mx-auto px-4 h-[60vh] min-h-[420px] flex flex-col justify-end pb-12 text-white">
           <span className="inline-block w-fit mb-3 text-[11px] tracking-widest uppercase text-white/80">
             Верховая езда • Выездка • Постой
           </span>
@@ -422,7 +422,7 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => track("map_yandex_click")}
-                href="https://yandex.ru/maps/?text=%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BD%D1%8F%20%D0%A9%D1%91%D0%BB%D0%BA%D0%BE%D0%B2%D0%BE%20%D0%9A%D0%BE%D0%BD%D0%B0%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%20%D0%A2%D0%B2%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C"
+                href="https://yandex.ru/maps/org/zolotoye_secheniye/29237188099/?ll=36.606123%2C56.609752&z=15"
               >
                 Открыть в Яндекс.Картах
               </a>
@@ -430,12 +430,22 @@ export default function App() {
                 className="underline"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => track("map_2gis_click")}
+                href="https://go.2gis.com/f2fxw"
+              >
+                Открыть в 2ГИС
+              </a>
+              <a
+                className="underline"
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => track("map_google_click")}
-                href="https://maps.google.com/?q=%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BD%D1%8F+%D0%A9%D1%91%D0%BB%D0%BA%D0%BE%D0%B2%D0%BE+%D0%9A%D0%BE%D0%BD%D0%B0%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9+%D1%80%D0%B0%D0%B9%D0%BE%D0%BD+%D0%A2%D0%B2%D0%B5%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C"
+                href="https://maps.app.goo.gl/c1fxxE2YWXgzW8hV7"
               >
                 Открыть в Google Maps
               </a>
             </div>
+            <div className="mt-2 text-xs text-neutral-400">В Яндекс.Картах — самая актуальная информация.</div>
           </div>
         </div>
       </section>
