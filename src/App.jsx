@@ -288,26 +288,6 @@ export default function App() {
         </ul>
       </section>
 
-      {/* CERTIFICATES */}
-      <section className="bg-white/60 border-y border-neutral-200">
-        <div className="max-w-6xl mx-auto px-4 py-14 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Подарочные сертификаты</h2>
-          <p className="mt-4 text-neutral-700 max-w-2xl mx-auto">
-            Электронный сертификат за 5 минут — на прогулку, урок или фотосессию. Срок действия — [укажите]. Персонализируем
-            под получателя.
-          </p>
-          <button
-            onClick={() => {
-              track("package_select");
-              scrollToForm("Хочу получить сертификат");
-            }}
-            className="mt-6 px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.98]"
-          >
-            Получить сертификат
-          </button>
-        </div>
-      </section>
-
       {/* REVIEWS */}
       <section id="reviews" className="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
         <h2 className="text-2xl sm:text-3xl font-semibold">Отзывы</h2>
