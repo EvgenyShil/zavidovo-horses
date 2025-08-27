@@ -60,7 +60,7 @@ export default function App() {
       <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-neutral-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-2xl bg-amber-200/70 border border-amber-300 shadow-sm">
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-2xl">
               <img src="/images/logo-horse.png" alt="" className="w-5 h-5" />
             </span>
             <span className="font-semibold tracking-tight">{BRAND}</span>
@@ -286,26 +286,6 @@ export default function App() {
           <li>Дети: с 3 лет — пони‑прогулки с проводником; с 10+ — занятия на лошадях.</li>
           <li>Весовые ограничения: [укажите, если есть].</li>
         </ul>
-      </section>
-
-      {/* CERTIFICATES */}
-      <section className="bg-white/60 border-y border-neutral-200">
-        <div className="max-w-6xl mx-auto px-4 py-14 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Подарочные сертификаты</h2>
-          <p className="mt-4 text-neutral-700 max-w-2xl mx-auto">
-            Электронный сертификат за 5 минут — на прогулку, урок или фотосессию. Срок действия — [укажите]. Персонализируем
-            под получателя.
-          </p>
-          <button
-            onClick={() => {
-              track("package_select");
-              scrollToForm("Хочу получить сертификат");
-            }}
-            className="mt-6 px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.98]"
-          >
-            Получить сертификат
-          </button>
-        </div>
       </section>
 
       {/* REVIEWS */}
