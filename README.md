@@ -39,7 +39,7 @@ npm run preview
 - Заголовок и description: `index.html` в `<title>` и `<meta name="description">`.
 
 ### Где править контент
-- Тексты, цены, телефоны: `src/constants.js`
+- Тексты и телефоны: `src/constants.js`
 - Разметка секций: `src/App.jsx`
 
 ### Тесты

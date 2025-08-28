@@ -67,7 +67,6 @@ export default function App() {
           </div>
           <nav className="hidden sm:flex items-center gap-6 text-sm">
             <a href="#services" className="hover:text-amber-700">Услуги</a>
-            <a href="#prices" className="hover:text-amber-700">Цены</a>
             <a href="#faq" className="hover:text-amber-700">FAQ</a>
             <a href="#contacts" className="hover:text-amber-700">Контакты</a>
           </nav>
@@ -182,8 +181,7 @@ export default function App() {
                 <h3 className="font-medium">{s.title}</h3>
               </div>
               <p className="mt-3 text-sm text-neutral-600 leading-relaxed">{s.desc}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-[15px] font-medium text-neutral-800">{s.price}</span>
+              <div className="mt-4 flex justify-end">
                 <button
                   onClick={() => {
                     track("package_select");
@@ -196,55 +194,6 @@ export default function App() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      {/* PRICES */}
-      <section id="prices" className="bg-white/60 border-y border-neutral-200 scroll-mt-24">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Прайс</h2>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            {[{
-              name: "Урок (1 час)",
-              price: "2 000 ₽",
-              features: ["Микрогруппа до 2 человек", "Инструктор рядом", "Шлем и защита"],
-              badge: "Популярно",
-            }, {
-              name: "Прогулка по полям/лесу (1 час)",
-              price: "3 000 ₽",
-              features: ["Безопасный маршрут", "Чай после занятия", "Фото на телефон"],
-              badge: "Хит",
-            }, {
-              name: "Урок с тренером (манеж)",
-              price: "3 500 ₽",
-              features: ["Индивидуальная программа", "Отработка посадки", "Домашнее задание"],
-            }].map((p, i) => (
-              <div key={i} className={`rounded-2xl border p-6 bg-white shadow-sm ${p.badge ? "border-amber-400" : "border-neutral-200"}`}>
-                {p.badge && (
-                  <span className="inline-block text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300">{p.badge}</span>
-                )}
-                <h3 className="mt-2 text-lg font-semibold">{p.name}</h3>
-                <div className="mt-2 text-3xl font-semibold">{p.price}</div>
-                <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-                  {p.features.map((f, j) => (
-                    <li key={j} className="flex gap-2">
-                      <CheckCircle2 className="w-4 h-4 mt-[2px]" strokeWidth={1.8} />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => {
-                    track("package_select");
-                    scrollToForm(`Интересует пакет: ${p.name}`);
-                  }}
-                  className="mt-6 w-full px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm"
-                >
-                  Выбрать
-                </button>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
