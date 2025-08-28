@@ -1,11 +1,11 @@
 // Тексты и настройки сайта
-export const BRAND = 'КСК "Золотое сечение"';
-export const PHONE = "+7 (960) 713‑18‑43";
-export const PHONE_LINK = "79607131843";
-export const WHATSAPP = "79153582505";
+export const BRAND = 'Zavodovo Horses';
+export const PHONE = "+7 (925) 011‑48‑84";
+export const PHONE_LINK = "79250114884";
+export const WHATSAPP = "79250114884";
 export const WHATSAPP_MESSAGE =
   "Здравствуйте! Хочу записаться на урок (1 ч) в ближайшие выходные.";
-export const TELEGRAM = "Evgeny_ssh"; // опционально
+export const TELEGRAM = "+79250114884"; // опционально
 export const EMAIL = "info@zavidovo-horses.ru";
 export const ADDRESS = "Тверская обл., Конаковский р‑н, дер. Щёлково";
 

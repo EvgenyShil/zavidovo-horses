@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { MapPin, Baby, CheckCircle2, Home, Activity, MessageCircle, Send } from "lucide-react";
 import {
   BRAND,
+  PHONE,
   WHATSAPP,
   WHATSAPP_MESSAGE,
   TELEGRAM,
@@ -67,7 +68,6 @@ export default function App() {
           </div>
           <nav className="hidden sm:flex items-center gap-6 text-sm">
             <a href="#services" className="hover:text-amber-700">Услуги</a>
-            <a href="#prices" className="hover:text-amber-700">Цены</a>
             <a href="#faq" className="hover:text-amber-700">FAQ</a>
             <a href="#contacts" className="hover:text-amber-700">Контакты</a>
           </nav>
@@ -106,11 +106,11 @@ export default function App() {
       {/* HERO */}
       <section
         className="relative"
-        style={{
-          backgroundImage: 'url(/images/hero-sunset.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 60%',
-        }}
+          style={{
+            backgroundImage: 'url(/2_horses.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 60%',
+          }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/35 to-transparent" />
         <div className="relative max-w-6xl mx-auto px-4 h-[60vh] min-h-[420px] flex flex-col justify-end pb-12 text-white">
@@ -121,7 +121,7 @@ export default function App() {
             Завидово: учим, тренируем, заботимся о лошадях
           </h1>
           <p className="max-w-2xl mt-4 text-white/90 text-base sm:text-lg">
-            КСК «Золотое сечение» — уютный конный клуб в дер. Щёлково. Обучение для взрослых и детей, тренировки по выездке, постой лошадей.
+            Zavodovo Horses — уютный конный клуб в дер. Щёлково. Обучение для взрослых и детей, тренировки по выездке, постой лошадей.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <button onClick={scrollToForm} className="px-5 py-3 rounded-2xl bg-amber-600 text-white shadow hover:bg-amber-700 active:scale-[.99]">
@@ -199,61 +199,12 @@ export default function App() {
         </div>
       </section>
 
-      {/* PRICES */}
-      <section id="prices" className="bg-white/60 border-y border-neutral-200 scroll-mt-24">
-        <div className="max-w-6xl mx-auto px-4 py-14">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Прайс</h2>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            {[{
-              name: "Урок (1 час)",
-              price: "2 000 ₽",
-              features: ["Микрогруппа до 2 человек", "Инструктор рядом", "Шлем и защита"],
-              badge: "Популярно",
-            }, {
-              name: "Прогулка по полям/лесу (1 час)",
-              price: "3 000 ₽",
-              features: ["Безопасный маршрут", "Чай после занятия", "Фото на телефон"],
-              badge: "Хит",
-            }, {
-              name: "Урок с тренером (манеж)",
-              price: "3 500 ₽",
-              features: ["Индивидуальная программа", "Отработка посадки", "Домашнее задание"],
-            }].map((p, i) => (
-              <div key={i} className={`rounded-2xl border p-6 bg-white shadow-sm ${p.badge ? "border-amber-400" : "border-neutral-200"}`}>
-                {p.badge && (
-                  <span className="inline-block text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300">{p.badge}</span>
-                )}
-                <h3 className="mt-2 text-lg font-semibold">{p.name}</h3>
-                <div className="mt-2 text-3xl font-semibold">{p.price}</div>
-                <ul className="mt-4 space-y-2 text-sm text-neutral-700">
-                  {p.features.map((f, j) => (
-                    <li key={j} className="flex gap-2">
-                      <CheckCircle2 className="w-4 h-4 mt-[2px]" strokeWidth={1.8} />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => {
-                    track("package_select");
-                    scrollToForm(`Интересует пакет: ${p.name}`);
-                  }}
-                  className="mt-6 w-full px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm"
-                >
-                  Выбрать
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* AWARDS */}
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-6 items-center">
           <div className="grid grid-cols-2 gap-3">
-            <img src="/images/awards-team.jpg" alt="Команда КСК «Золотое сечение» на пьедестале с наградами" className="rounded-2xl object-cover w-full h-48 sm:h-56" loading="lazy" decoding="async" />
-            <img src="/images/awards-trophies.jpg" alt="Кубки и грамоты КСК «Золотое сечение»" className="rounded-2xl object-cover w-full h-48 sm:h-56" loading="lazy" decoding="async" />
+            <img src="/images/awards-team.jpg" alt="Команда Zavodovo Horses на пьедестале с наградами" className="rounded-2xl object-cover w-full h-48 sm:h-56" loading="lazy" decoding="async" />
+            <img src="/images/awards-trophies.jpg" alt="Кубки и грамоты Zavodovo Horses" className="rounded-2xl object-cover w-full h-48 sm:h-56" loading="lazy" decoding="async" />
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl font-semibold">Победы наших спортсменов</h2>
@@ -281,31 +232,6 @@ export default function App() {
           <li>Закрытая обувь с небольшим каблуком.</li>
           <li>Перчатки (по желанию).</li>
         </ul>
-        <h3 className="mt-6 font-medium">Возраст и ограничения</h3>
-        <ul className="mt-2 space-y-2 text-sm text-neutral-700">
-          <li>Дети: с 3 лет — пони‑прогулки с проводником; с 10+ — занятия на лошадях.</li>
-          <li>Весовые ограничения: [укажите, если есть].</li>
-        </ul>
-      </section>
-
-      {/* REVIEWS */}
-      <section id="reviews" className="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
-        <h2 className="text-2xl sm:text-3xl font-semibold">Отзывы</h2>
-        <div className="mt-6 grid md:grid-cols-3 gap-6">
-          {[
-            [
-              "Отличное первое знакомство с верховой ездой. Тренер деликатно объясняет, лошадь очень спокойная.",
-              "Анна",
-            ],
-            ["Приезжаем семьёй по выходным. Дочке нравится пони-прогулка, я занимаюсь выездкой.", "Сергей"],
-            ["Чистые денники, внимательный уход — постой без хлопот.", "Мария"],
-          ].map(([t, a], i) => (
-            <figure key={i} className="rounded-2xl bg-white border border-neutral-200 p-5 shadow-sm">
-              <blockquote className="text-sm text-neutral-700">“{t}”</blockquote>
-              <figcaption className="mt-3 text-sm font-medium text-neutral-900">— {a}</figcaption>
-            </figure>
-          ))}
-        </div>
       </section>
 
       {/* FORM */}
@@ -366,7 +292,7 @@ export default function App() {
               rel="noreferrer"
               onClick={() => track("whatsapp_click")}
             >
-              <MessageCircle className="w-4 h-4" /> WhatsApp
+              <MessageCircle className="w-4 h-4" /> {PHONE}
             </a>
             <a
               className="inline-flex items-center gap-2 underline"
@@ -375,7 +301,7 @@ export default function App() {
               rel="noreferrer"
               onClick={() => track("telegram_click")}
             >
-              <Send className="w-4 h-4" /> Telegram
+              <Send className="w-4 h-4" /> {PHONE}
             </a>
           </div>
         </div>
@@ -426,7 +352,6 @@ export default function App() {
           {[
             ["Можно ли без опыта?", "Да, инструктор познакомит с правилами, подберём спокойную лошадь."],
             ["Что надеть?", "Удобные штаны без швов на внутренней стороне, закрытую обувь с небольшим каблуком. Шлем выдаём."],
-            ["Можно детям?", "С 3 лет — пони‑прогулки с проводником. На больших лошадях обычно с 10+."],
             ["Как оплатить?", "Наличные, перевод, по запросу — счёт. Сертификаты доступны круглогодично."]
           ].map(([q, a], i) => (
             <details key={i} className="rounded-2xl bg-white border border-neutral-200 p-5 open:shadow-sm">
@@ -444,10 +369,10 @@ export default function App() {
             <h2 className="text-2xl sm:text-3xl font-semibold">Контакты</h2>
             <p className="mt-4 text-neutral-300 inline-flex items-center gap-2"><MapPin className="w-4 h-4" /> Адрес: {ADDRESS}</p>
             <div className="mt-3 text-neutral-300">
-              WhatsApp: <a className="underline" href={waLink} target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click")}>Написать</a>
+              WhatsApp: <a className="underline" href={waLink} target="_blank" rel="noreferrer" onClick={() => track("whatsapp_click")}>{PHONE}</a>
             </div>
             <div className="mt-1 text-neutral-300">
-              Telegram: <a className="underline" href={`https://t.me/${TELEGRAM}`} target="_blank" rel="noreferrer" onClick={() => track("telegram_click")}>@{TELEGRAM}</a>
+              Telegram: <a className="underline" href={`https://t.me/${TELEGRAM}`} target="_blank" rel="noreferrer" onClick={() => track("telegram_click")}>{PHONE}</a>
             </div>
             <p className="mt-6 text-sm text-neutral-400">Работаем по предварительной записи.</p>
           </div>
