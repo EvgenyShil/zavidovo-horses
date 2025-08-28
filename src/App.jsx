@@ -160,18 +160,19 @@ export default function App() {
 
       {/* SERVICES */}
       <section id="services" className="max-w-6xl mx-auto px-4 py-16 scroll-mt-24">
-        <div className="flex items-end justify-between gap-6 mb-8">
+        <div className="flex items-end justify-between gap-6 mb-2">
           <h2 className="text-2xl sm:text-3xl font-semibold">Наши услуги</h2>
-            <button
-              onClick={() => {
-                track("package_select");
-                scrollToForm("Хочу записаться на урок");
-              }}
-              className="hidden sm:block px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm"
-            >
-              Выбрать и записаться
-            </button>
+          <button
+            onClick={() => {
+              track("package_select");
+              scrollToForm("Хочу записаться на урок");
+            }}
+            className="hidden sm:block px-4 py-2 rounded-xl bg-neutral-900 text-white text-sm"
+          >
+            Выбрать и записаться
+          </button>
         </div>
+        <p className="mb-8 text-sm text-neutral-600">Цены по запросу</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <article key={i} className="group rounded-2xl bg-white border border-neutral-200 p-5 shadow-sm hover:shadow-md transition-shadow">
@@ -182,8 +183,7 @@ export default function App() {
                 <h3 className="font-medium">{s.title}</h3>
               </div>
               <p className="mt-3 text-sm text-neutral-600 leading-relaxed">{s.desc}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-[15px] font-medium text-neutral-800">{s.price}</span>
+              <div className="mt-4 flex justify-end">
                 <button
                   onClick={() => {
                     track("package_select");
@@ -195,6 +195,28 @@ export default function App() {
                 </button>
               </div>
             </article>
+          ))}
+        </div>
+      </section>
+      {/* GALLERY */}
+      <section className="max-w-6xl mx-auto px-4 py-16">
+        <h2 className="text-2xl sm:text-3xl font-semibold mb-6">Галерея</h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            { src: '/images/belis_do.jpg', alt: 'Прогулка на лошади в манеже' },
+            { src: '/images/beylis_posle.jpg', alt: 'Лошадь на пастбище' },
+            { src: '/images/dressage-1.jpg', alt: 'Тренировка по выездке' },
+            { src: '/images/dressage-2.jpg', alt: 'Проезд мимо трибун на тренировке' },
+            { src: '/images/stable-horse.jpg', alt: 'Лошадь в деннике' },
+            { src: '/images/awards-team.jpg', alt: 'Команда Zavodovo Horses с наградами' },
+          ].map((img, i) => (
+            <img
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-48 object-cover rounded-2xl border border-neutral-200" />
           ))}
         </div>
       </section>
