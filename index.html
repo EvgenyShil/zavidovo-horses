@@ -1,47 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>КСК «Золотое сечение» — Завидово</title>
-    <meta name="description" content="Обучение верховой езде для взрослых и детей, тренировки по выездке и постой лошадей. Тверская область, дер. Щёлково." />
+    <title>Сайт на техническом обслуживании — Zavidovo Horses</title>
     <link rel="icon" type="image/png" href="/images/logo-horse.png" />
-    <!-- hero image preloading for faster LCP -->
-    <link rel="preload" as="image" href="/images/hero-sunset.jpg" />
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="КСК «Золотое сечение» — верховая езда в Завидово" />
-    <meta property="og:description" content="Уроки, прогулки, выездка и постой лошадей. Запись в WhatsApp." />
-    <meta property="og:image" content="/images/hero-sunset.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <script src="https://mc.yandex.ru/metrika/tag.js" async></script>
-    <script>
-      window.METRIKA_ID = 123456789;
-      window.ym = window.ym || function () {
-        (window.ym.a = window.ym.a || []).push(arguments);
-      };
-      ym(window.METRIKA_ID, "init", { defer: true });
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SportsActivityLocation",
-        "name": "КСК «Золотое сечение»",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "дер. Щёлково",
-          "addressRegion": "Тверская область",
-          "addressCountry": "RU"
-        },
-        "telephone": "+7-960-713-18-43",
-        "url": "https://zavidovo-horses.ru/",
-        "sameAs": ["https://t.me/Evgeny_ssh"],
-        "openingHours": "Mo-Su 10:00-20:00"
-      }
-    </script>
+    <meta name="robots" content="noindex" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="flex h-screen items-center justify-center bg-gradient-to-br from-amber-900 via-amber-700 to-yellow-600 p-6 text-white relative">
+    <header class="absolute top-6 left-1/2 -translate-x-1/2 text-2xl md:text-3xl font-semibold">Zavidovo Horses</header>
+    <div class="text-center space-y-8 max-w-md">
+      <h1 class="text-4xl md:text-5xl font-bold">Сайт на техническом обслуживании</h1>
+      <p class="text-lg md:text-xl">Мы скоро вернёмся. По вопросам записи пишите нам:</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://wa.me/79250114884" class="px-6 py-3 rounded-full bg-green-500 hover:bg-green-600 font-semibold">WhatsApp</a>
+        <a href="https://t.me/+79250114884" class="px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 font-semibold">Telegram</a>
+      </div>
+      <p class="text-sm md:text-base">
+        Телефон: <a href="tel:+79250114884" class="underline">+7&nbsp;925&nbsp;011&nbsp;4884</a>
+      </p>
+    </div>
   </body>
 </html>
