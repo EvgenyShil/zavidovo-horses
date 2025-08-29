@@ -3,24 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Сайт на ремонте — КСК «Золотое сечение»</title>
+    <title>Сайт на техническом обслуживании — КСК «Золотое сечение»</title>
     <link rel="icon" type="image/png" href="/images/logo-horse.png" />
+    <meta name="robots" content="noindex" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="h-screen">
     <div class="relative h-full w-full">
       <img src="/images/dressage-1.jpg" alt="Всадник" class="absolute inset-0 h-full w-full object-cover" />
       <div class="absolute inset-0 bg-black/60"></div>
-      <div class="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-6">
+
+      <main class="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-6 max-w-lg mx-auto">
         <img src="/images/dressage-2.jpg" alt="Лошадь" class="w-40 h-40 object-cover rounded-full shadow-lg mb-8" />
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Сайт на ремонте</h1>
-        <p class="text-lg md:text-xl mb-8 max-w-md">Мы скоро вернёмся. По вопросам записи пишите нам в удобный мессенджер.</p>
-        <div class="flex gap-4">
-          <a href="https://wa.me/79250114884" class="px-6 py-3 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold">WhatsApp</a>
-          <a href="https://t.me/+79250114884" class="px-6 py-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white font-semibold">Telegram</a>
+        <h1 class="text-3xl md:text-5xl font-semibold">Сайт на техническом обслуживании</h1>
+        <p class="mt-4 text-neutral-200">Мы скоро вернёмся. По вопросам записи — пишите нам:</p>
+
+        <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+          <a href="https://wa.me/79250114884" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold">WhatsApp</a>
+          <a href="https://t.me/+79250114884" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-600 text-white font-semibold">Telegram</a>
         </div>
-        <p class="mt-6 text-sm md:text-base">+7&nbsp;925&nbsp;011&nbsp;4884</p>
-      </div>
+
+        <p class="mt-6 text-sm md:text-base">
+          Телефон: <a href="tel:+79250114884" class="underline">+7&nbsp;925&nbsp;011&nbsp;4884</a>
+        </p>
+      </main>
     </div>
   </body>
 </html>
